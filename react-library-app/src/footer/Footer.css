@@ -1,0 +1,15 @@
+.footer-links-list ul {
+  padding-left: 0;
+}
+.footer-links-list ul li {
+  margin-bottom: 15px;
+  list-style-type: none;
+  padding-left: 0;
+}
+.footer-links-list a {
+  text-decoration: none;
+  color: var(--bs-body-color);
+}
+.section_footer {
+  background-color: #ddebfe;
+}

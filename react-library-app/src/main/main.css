@@ -1,0 +1,19 @@
+.AllCard {
+  padding: 50px;
+  display: flex;
+  justify-content: space-around;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.Card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding-top: 20px;
+  background-color: #ddebfe;
+  width: 300px;
+  height: 300px;
+}
