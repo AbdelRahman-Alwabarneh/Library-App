@@ -1,6 +1,16 @@
 import "./Header.css";
 import Phone from "../Photo/logo.png";
+import { Link, useNavigate } from "react-router-dom";
+
 function NavBar() {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("issuccess");
+    localStorage.removeItem("FormLocalStorage");
+    localStorage.removeItem("First_Name");
+    navigate("/singup");
+  };
+
   return (
     <>
       <link
@@ -18,13 +28,13 @@ function NavBar() {
       />
       <nav className="navbar navbar-expand-lg sticky-top">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <Link to="/" className="navbar-brand">
             <img
               className="d-inline-block align-text-center"
               src={Phone}
               alt="Logo"
             />
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -38,46 +48,32 @@ function NavBar() {
           </button>
           <div className="collapse navbar-collapse" id="main">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link fw-bold fs-5" href="#menu">
-                  Heart
-                </a>
+              <li className="iitem nav-item">
+                <Link to="/" className="nav-link fw-bold fs-5">
+                  Home
+                </Link>
               </li>
-              <li className="nav-item">
-                <a className="nav-link fw-bold fs-5" href="#">
-                  Brain
-                </a>
+              <li className="iitem nav-item">
+                <Link to="/Aboutus" className="nav-link fw-bold fs-5">
+                  About us
+                </Link>
               </li>
-              <li className="nav-item">
-                <a className="nav-link fw-bold fs-5" href="#">
-                  Location
-                </a>
-              </li>
-              <li className="drop-down nav-item dropdown fs-5">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Contact Us
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <a className="dropdown-item" href="tel:+962778997053">
-                      <i className="fa-solid fa-phone"></i> Phone
-                    </a>
-                    <a
-                      className="dropdown-item"
-                      href="mailto:abdelRahmanalwabarneh@gmail.com"
-                    >
-                      <i className="fa-solid fa-envelope-open-text"></i> Email
-                    </a>
-                  </li>
-                </ul>
+              <li className="iitem nav-item">
+                <Link to="/Contactus" className="nav-link fw-bold fs-5">
+                  Contact us
+                </Link>
               </li>
             </ul>
+            <button
+              id="Log_In"
+              className="Log_In btn btn-outline-danger ms-2"
+              type="button"
+              onClick={handleLogout}
+            >
+              {localStorage.getItem("issuccess") === "true"
+                ? <span>Log out</span>
+                : <span>Sing up</span>}
+            </button>
           </div>
         </div>
       </nav>

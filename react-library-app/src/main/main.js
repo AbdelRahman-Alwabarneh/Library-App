@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import "./main.css";
 
 const initState = {
@@ -52,21 +53,27 @@ const initState = {
     },
   ],
 };
-
-
 function Main() {
+  useEffect(() => {
+    if (localStorage.getItem("welcome") === "true") {
+      const FirstName = JSON.parse(localStorage.getItem("First_Name"));
+      alert(`Welcome ${FirstName}`);
+      localStorage.removeItem("welcome");
+    }
+  }, []);
   return (
     <>
-    <div className="AllCard">
-      {initState.books.map((element) => (
-        <div className="Card">
-        <h2>{element.title}</h2><br/>
-        <h3>{element.author}</h3><br/>
-        <h5>{element.isbn}</h5>
-        </div>
-      ))}
-    </div>
-
+      <div className="AllCard">
+        {initState.books.map((element) => (
+          <div className="Card">
+            <h2>{element.title}</h2>
+            <br />
+            <h3>{element.author}</h3>
+            <br />
+            <h5>{element.isbn}</h5>
+          </div>
+        ))}
+      </div>
     </>
   );
 }

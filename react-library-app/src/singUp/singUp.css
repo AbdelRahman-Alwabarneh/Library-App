@@ -1,0 +1,40 @@
+.container_SingUp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.Form_Singup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+  height: 450px;
+  border-radius: 20px;
+  background-color: #ddebfe;
+}
+.SingUp_input label {
+  display: flex;
+  flex-direction: column;
+}
+.SingUp_input label {
+  font-size: 15px;
+  font-weight: bold;
+  padding-top: 20px;
+}
+.SingUp_input input {
+  border: none;
+  outline: none;
+  width: 300px;
+  background: none;
+  border-bottom: 2px solid black;
+}
+.submit {
+  margin-top: 20px;
+  border: 2px solid black !important;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+
