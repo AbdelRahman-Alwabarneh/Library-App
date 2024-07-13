@@ -54,6 +54,11 @@ function NavBar() {
                 </Link>
               </li>
               <li className="iitem nav-item">
+                <Link to="/BookCatalog" className="nav-link fw-bold fs-5">
+                  Book Catalog
+                </Link>
+              </li>
+              <li className="iitem nav-item">
                 <Link to="/Aboutus" className="nav-link fw-bold fs-5">
                   About us
                 </Link>
@@ -70,9 +75,11 @@ function NavBar() {
               type="button"
               onClick={handleLogout}
             >
-              {localStorage.getItem("issuccess") === "true"
-                ? <span>Log out</span>
-                : <span>Sing up</span>}
+              {localStorage.getItem("issuccess") === "true" ? (
+                <span>Log out</span>
+              ) : (
+                <span>Sing up</span>
+              )}
             </button>
           </div>
         </div>
