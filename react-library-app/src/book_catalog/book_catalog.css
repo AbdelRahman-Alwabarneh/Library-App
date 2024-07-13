@@ -1,4 +1,39 @@
+
 h1 {
     padding-top: 20px;
     text-align: center;
+}
+.button_Card {
+    display: flex;
+    gap: 20px;
+}
+.button_Card button{
+    color: white;
+    width: 70px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+.button_Edit {
+    background-color: green;
+}
+.button_Delete{
+    background-color: red;
+}
+.All_input_books {
+    display: flex;
+    justify-content: center;
+}
+.input_books {
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+    flex-direction: column;
+    
+}
+.input_books input {
+    width: 400px;
+}
+.submit_button {
+    margin-top: 20px;
+    font-weight: bold;
 }
