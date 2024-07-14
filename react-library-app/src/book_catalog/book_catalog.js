@@ -48,12 +48,12 @@ function BookCatalog() {
     }
   }
 
-  async function UpdateBooks(book) {
+  async function UpdateBooks(id) {
     try {
       await axios.put(
-        `https://library-app-79fea-default-rtdb.firebaseio.com/books/${book.id}.json`,
+        `https://library-app-79fea-default-rtdb.firebaseio.com/books/${id}.json`,
         {
-          id: book.id,
+          id: id,
           title: bookData.title,
           author: bookData.author,
           isbn: bookData.isbn,
@@ -70,6 +70,17 @@ function BookCatalog() {
     getBooks().then((dataBooks) => setBooks(dataBooks));
   }, []);
 
+  async function Delete(id) {
+    try {
+      await axios.patch(
+        `https://library-app-79fea-default-rtdb.firebaseio.com/books/${id}.json`,
+        { available: false }
+      );
+    } catch (error) {
+      console.error("Error deleting book: ", error);
+    }
+  }
+
   return (
     <>
       <h1>Book Catalog</h1>
@@ -83,6 +94,7 @@ function BookCatalog() {
           <div className="input_books">
             <label>Title</label>
             <input
+              required
               type="text"
               onChange={(e) =>
                 setBookData({ ...bookData, title: e.target.value })
@@ -90,6 +102,7 @@ function BookCatalog() {
             />
             <label>Author</label>
             <input
+              required
               type="text"
               onChange={(e) =>
                 setBookData({ ...bookData, author: e.target.value })
@@ -97,40 +110,51 @@ function BookCatalog() {
             />
             <label>Isbn</label>
             <input
+              required
               type="text"
               onChange={(e) =>
                 setBookData({ ...bookData, isbn: e.target.value })
               }
             />
-            <label>Id</label>
+            {/* <label>Id</label>
             <input
               type="text"
               onChange={(e) => setBookData({ ...bookData, id: e.target.value })}
-            />
+            /> */}
 
             <input className="submit_button" type="submit" />
           </div>
         </div>
       </form>
       <div className="AllCard">
-        {books.map((book) => (
-          <div className="Card">
-            <h2>{book.title}</h2>
-            <br />
-            <h3>{book.author}</h3>
-            <br />
-            <h5>{book.isbn}</h5>
-            <br />
-            <h6>{book.id}</h6>
-            <div className="button_Card">
-              <button className="button_Edit" onClick={() => UpdateBooks(book)}>
-                Edit
-              </button>
+        {books.map((book) =>
+          book.available ? (
+            <div className="Card" key={book.id}>
+              <h2>{book.title}</h2>
+              <br />
+              <h3>{book.author}</h3>
+              <br />
+              <h5>{book.isbn}</h5>
+              <br />
+              <h6>{book.id}</h6>
+              <div className="button_Card">
+                <button
+                  className="button_Edit"
+                  onClick={() => UpdateBooks(book.id - 1)}
+                >
+                  Edit
+                </button>
 
-              <button className="button_Delete">Delete</button>
+                <button
+                  className="button_Delete"
+                  onClick={() => Delete(book.id - 1)}
+                >
+                  Delete
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          ) : null
+        )}
       </div>
     </>
   );
