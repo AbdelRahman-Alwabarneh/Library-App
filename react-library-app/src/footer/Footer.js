@@ -14,6 +14,7 @@ function Footer() {
                   href="https://library.livecanvas.com/sections/"
                 >
                   <img
+                  id="immmmmage"
                     class="img-fluid me-1"
                     src={Phone}
                     alt="my brand"
@@ -25,7 +26,7 @@ function Footer() {
               </div>
               <div class="lc-block">
                 <div editable="rich">
-                  <p class="text-muted">
+                  <p id="aasdsada">
                     © All rights reserved to Donuts Factory 2024
                   </p>
                 </div>
