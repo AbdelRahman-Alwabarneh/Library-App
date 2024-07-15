@@ -63,14 +63,13 @@ function Main() {
   }, []);
   return (
     <>
+
       <div className="AllCard">
         {initState.books.map((element) => (
-          <div className="Card">
-            <h2>{element.title}</h2>
-            <br />
-            <h3>{element.author}</h3>
-            <br />
-            <h5>{element.isbn}</h5>
+          <div className="bg-blue-100 rounded-lg p-6 w-72 h-72 flex flex-col justify-center items-center">
+            <h2 className="text-xl font-bold mb-4">{element.title}</h2>
+            <h3 className="text-lg font-medium mb-4">{element.author}</h3>
+            <h5 className="text-sm">{element.isbn}</h5>
           </div>
         ))}
       </div>

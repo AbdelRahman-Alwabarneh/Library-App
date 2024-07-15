@@ -1,9 +1,9 @@
-import "./Header.css";
 import Phone from "../Photo/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 
 function NavBar() {
   const navigate = useNavigate();
+
   const handleLogout = () => {
     localStorage.removeItem("issuccess");
     localStorage.removeItem("FormLocalStorage");
@@ -13,74 +13,92 @@ function NavBar() {
 
   return (
     <>
-      <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-        crossorigin="anonymous"
-      />
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"
-      />
-      <nav className="navbar navbar-expand-lg sticky-top">
-        <div className="container-fluid">
-          <Link to="/" className="navbar-brand">
-            <img
-              className="d-inline-block align-text-center"
-              src={Phone}
-              alt="Logo"
-            />
-          </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#main"
-            aria-controls="main"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <i className="fa-solid fa-bars"></i>
-          </button>
-          <div className="collapse navbar-collapse" id="main">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="iitem nav-item">
-                <Link to="/" className="nav-link fw-bold fs-5">
-                  Home
+      <nav className="bg-gray-800 shadow-lg">
+        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+          <div className="relative flex items-center justify-between h-16">
+            <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+              <button
+                type="button"
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                aria-controls="mobile-menu"
+                aria-expanded="false"
+              >
+                <span className="sr-only">Open main menu</span>
+                <svg
+                  className="block h-6 w-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+              <div className="flex-shrink-0">
+                <Link to="/" className="flex items-center">
+                  <img
+                    className="block lg:hidden w-12  h-12 rounded-full	"
+                    src={Phone}
+                    alt="Logo"
+                  />
+                  <img
+                    className="hidden lg:block  w-12  h-12 rounded-full	"
+                    src={Phone}
+                    alt="Logo"
+                  />
                 </Link>
-              </li>
-              <li className="iitem nav-item">
-                <Link to="/BookCatalog" className="nav-link fw-bold fs-5">
-                  Book Catalog
-                </Link>
-              </li>
-              <li className="iitem nav-item">
-                <Link to="/Aboutus" className="nav-link fw-bold fs-5">
-                  About us
-                </Link>
-              </li>
-              <li className="iitem nav-item">
-                <Link to="/Contactus" className="nav-link fw-bold fs-5">
-                  Contact us
-                </Link>
-              </li>
-            </ul>
-            <button
-              id="Log_In"
-              className="Log_In btn btn-outline-danger ms-2"
-              type="button"
-              onClick={handleLogout}
-            >
-              {localStorage.getItem("issuccess") === "true" ? (
-                <span>Log out</span>
-              ) : (
-                <span>Sing up</span>
-              )}
-            </button>
+              </div>
+              <div className="hidden sm:block sm:ml-6">
+                <div className="flex space-x-4">
+                  <Link
+                    to="/"
+                    className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    Home
+                  </Link>
+                  <Link
+                    to="/BookCatalog"
+                    className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    Book Catalog
+                  </Link>
+                  <Link
+                    to="/Aboutus"
+                    className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    About us
+                  </Link>
+                  <Link
+                    to="/Contactus"
+                    className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    Contact us
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <button
+                id="Log_In"
+                className="Log_In bg-transparent text-white hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium"
+                type="button"
+                onClick={handleLogout}
+              >
+                {localStorage.getItem("issuccess") === "true" ? (
+                  <span>Log out</span>
+                ) : (
+                  <span>Sign up</span>
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </nav>

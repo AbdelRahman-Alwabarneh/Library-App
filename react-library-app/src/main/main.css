@@ -6,7 +6,7 @@
   flex-wrap: wrap;
 }
 
-.Card {
+/* .Card {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,4 +17,4 @@
   background-color: #ddebfe;
   width: 300px;
   height: 300px;
-}
+} */

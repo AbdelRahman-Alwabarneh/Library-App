@@ -32,6 +32,8 @@ h1 {
 }
 .input_books input {
     width: 400px;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 .submit_button {
     margin-top: 20px;

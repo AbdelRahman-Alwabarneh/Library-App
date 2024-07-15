@@ -77,16 +77,14 @@ function BookCatalog() {
         `https://library-app-79fea-default-rtdb.firebaseio.com/books/${id}.json`,
         { available: false }
       );
-      
     } catch (error) {
       console.error("Error deleting book: ", error);
     }
-    
   }
 
   return (
     <>
-      <h1>Book Catalog</h1>
+      <h1 className="text-3xl font-bold">Book Catalog</h1>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -129,28 +127,31 @@ function BookCatalog() {
           </div>
         </div>
       </form>
-      <div className="AllCard">
+      <div class="flex flex-wrap justify-center">
         {books.map((book) =>
           book.available ? (
-            <div className="Card" key={book.id}>
-              <h2>{book.title}</h2>
-              <br />
-              <h3>{book.author}</h3>
-              <br />
-              <h5>{book.isbn}</h5>
-              <br />
-              <h6>{book.id}</h6>
-              <div className="button_Card">
+            <div
+              key={book.id}
+              class="max-w-sm rounded overflow-hidden shadow-lg m-4"
+            >
+              <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">{book.title}</div>
+                <p class="text-gray-700 text-base mb-2">
+                  Author: {book.author}
+                </p>
+                <p class="text-gray-700 text-base mb-2">ISBN: {book.isbn}</p>
+                <p class="text-gray-700 text-base mb-2">ID: {book.id}</p>
+              </div>
+              <div class="px-6 py-4 flex justify-center">
                 <button
-                  className="button_Edit"
                   onClick={() => UpdateBooks(book.id)}
+                  class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2"
                 >
                   Edit
                 </button>
-
                 <button
-                  className="button_Delete"
                   onClick={() => Delete(book.id)}
+                  class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                 >
                   Delete
                 </button>
