@@ -41,6 +41,7 @@ function BookCatalog() {
           title: bookData.title,
           author: bookData.author,
           isbn: bookData.isbn,
+          available: true,
         }
       );
     } catch (error) {
@@ -76,9 +77,11 @@ function BookCatalog() {
         `https://library-app-79fea-default-rtdb.firebaseio.com/books/${id}.json`,
         { available: false }
       );
+      
     } catch (error) {
       console.error("Error deleting book: ", error);
     }
+    
   }
 
   return (
@@ -140,14 +143,14 @@ function BookCatalog() {
               <div className="button_Card">
                 <button
                   className="button_Edit"
-                  onClick={() => UpdateBooks(book.id - 1)}
+                  onClick={() => UpdateBooks(book.id)}
                 >
                   Edit
                 </button>
 
                 <button
                   className="button_Delete"
-                  onClick={() => Delete(book.id - 1)}
+                  onClick={() => Delete(book.id)}
                 >
                   Delete
                 </button>
